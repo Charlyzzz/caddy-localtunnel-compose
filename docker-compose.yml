@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  caddy:
+    network_mode: "host"
+    build:
+      context: https://github.com/Charlyzzz/caddy-docker.git
+    command: ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree", "-email=erwin.debusschere@10pines.com"]
+    volumes:
+      - "./Caddyfile:/etc/Caddyfile"
+      - "./.caddy:/root/.caddy"
+
+  localtunnel-server:
+    network_mode: "host"
+    image: defunctzombie/localtunnel-server:latest
+    command: ["--domain=localtunnel.10pines.dev", "--port=1234", "--secure"]
