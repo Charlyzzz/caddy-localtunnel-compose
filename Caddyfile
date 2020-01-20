@@ -1,0 +1,8 @@
+localtunnel.10pines.dev *.localtunnel.10pines.dev {
+    proxy / 127.0.0.1:1234 {
+      transparent
+    }
+    tls {
+       dns route53  
+    }
+}
